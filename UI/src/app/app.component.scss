@@ -1,0 +1,99 @@
+.poster-img {
+  height: 374.4px;
+}
+.venue-card {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+}
+.seat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+}
+.seat {
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
+  &-occupied {
+    background-color: red;
+  }
+
+  &-selected {
+    background-color: green;
+    color: white;
+  }
+}
+
+.left-border {
+  border-left: 1px solid lightgrey;
+}
+
+body {
+  height: 100vh;
+}
+
+main {
+  padding-bottom: 50px;
+}
+
+.ticket-container {
+  position: absolute;
+  height: 92.5%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  left: 0;
+  z-index: 1;
+  top: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-ticket {
+  width: 50%;
+  height: 70%;
+  background-color: white;
+  padding: 30px 40px;
+}
+
+.seat-number {
+  font-size: 24px;
+}
+
+.reservation-card,
+.admin-show-row {
+  border: 1px solid lightgrey;
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.show-discription {
+  height: 25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.no-content-banner {
+  margin-top: 20%;
+}
+
+.grey-line {
+  background-color: lightgrey;
+  height: 2px;
+  width: 100%;
+  margin: 0 5px;
+}

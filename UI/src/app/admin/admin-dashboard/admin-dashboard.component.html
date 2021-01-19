@@ -1,0 +1,23 @@
+<div class="container mt-3">
+    <div class="pb-2 d-flex justify-content-between">
+        <h1>Admin Dashboard</h1><a href="/admin/create" [routerLink]="['/admin/create']" class="btn btn-success float-right align-self-center">Create Show</a>
+
+    </div>
+    <hr>
+    <div  *ngFor="let i of allShows" class="admin-show-row row mt-2">
+        <div class="col-4">
+            <img src="{{i.posterImgPath}}" alt="">
+        </div>
+        <div class="col">
+            <h5>{{i.name}}</h5>
+            <hr>
+            <p>
+                {{i.description!= null && i.description.trim().length!=0 ?  i.description:"--No Discription--"}}
+            </p>
+            <button class="btn btn-primary" (click)="showDetails(i.id)">View More</button>
+        </div>
+    </div>
+    <div class="h-100 d-flex justify-content-center align-items-center no-show-banner" *ngIf = "allShows.length == 0">
+        <h3 class="font-italic font-weight-light">-- No shows to display --</h3>
+    </div>
+</div>

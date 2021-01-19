@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <h1>Register</h1>
+  <hr />
+  <div class="row">
+    <div class="col-4">
+      <form action="" [formGroup]="registerForm" (submit)="submitHandler()">
+        <div class="form-group">
+          <label for="">Username</label>
+          <input type="text" class="form-control" formControlName="username"/>
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="email" name="" id="" class="form-control" formControlName="email" />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label
+          ><input type="password" name="" id="" class="form-control" 
+          formControlName="password"/>
+        </div>
+        <div class="form-group">
+          <label for="">Confirm Password</label
+          ><input type="password" name="" id="" class="form-control" 
+          formControlName="confirmPassword"/>
+        </div>
+        <span class="text-danger d-block" *ngIf="showError">{{errorMessage}}</span>
+        <input type="submit" value="Register" class="btn btn-primary mt-3" 
+        [disabled]="this.registerForm.invalid==true"/>
+      </form>
+    </div>
+  </div>
+</div>

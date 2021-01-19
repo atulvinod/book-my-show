@@ -1,0 +1,10 @@
+<div class="container mt-3">
+    <h1>All Shows..</h1>
+    <hr>
+    <div class="row">
+        <app-showcard [showData]="i" *ngFor="let i of showList" class="col-3 mt-2"></app-showcard>
+    </div>
+    <div class="h-100 d-flex justify-content-center align-items-center no-content-banner" *ngIf = "showList.length == 0">
+        <h3 class="font-italic font-weight-light">-- No Shows Available --</h3>
+    </div>
+</div>

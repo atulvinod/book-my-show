@@ -1,0 +1,36 @@
+<div class="container mt-3">
+  <h1>View Show details</h1>
+  <hr />
+  <h3>{{ showDetails.name }}</h3>
+  <div class="row mt-3">
+    <div class="col-3">
+      <img src="{{ showDetails.posterImgPath }}" alt="" />
+    </div>
+    <div class="col-9">
+      <div
+        class="row"
+        *ngFor="let i of venueDetails"
+        class="admin-show-row mt-2"
+      >
+        <div class="col">
+          <h4 class="mt-2">Date and time</h4>
+          <span>{{ i.showDateTime}}</span>
+          
+          <h4 class="mt-2">Location</h4>
+          <p>{{ i.address }}</p>
+
+          <h4 class="mt-2">Price</h4>
+          <span>
+            {{ i.showPrice | currency: "INR":true }}
+          </span>
+
+          <h4 class="mt-2">Available Seats</h4>
+          <span> {{ i.availableSeatCount }}</span>
+
+          <h4>Total Seats</h4>
+          <span>{{ i.totalSeatCount }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

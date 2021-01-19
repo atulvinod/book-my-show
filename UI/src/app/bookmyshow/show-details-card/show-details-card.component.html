@@ -1,0 +1,11 @@
+<div>
+    <div class="card">
+
+        <img src="{{showData.posterImgPath}}" class="card-img-top poster-img" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{showData.name}}</h5>
+          <p class="card-text show-discription">{{showData.description != null && showData.description.trim().length != 0 ? showData.description : "--No Discription--"}}</p>
+          <a (click)="showDetails(showData.id)" class="btn btn-primary w-auto" >View Details</a>
+        </div>
+      </div>
+</div>

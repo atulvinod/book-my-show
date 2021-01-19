@@ -1,0 +1,120 @@
+<div class="container mt-3">
+  <h1>Create Show</h1>
+  <hr />
+  <form [formGroup]="newShowForm">
+    <div class="form-group">
+      <label for="">Show Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+    <div class="form-group">
+      <label for="">Description</label>
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="3"
+        class="form-control"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="">Poster link</label>
+      <input
+        type="text"
+        name=""
+        id=""
+        class="form-control"
+        formControlName="posterImgPath"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Show Genre</label>
+      <input
+        type="text"
+        name=""
+        id=""
+        class="form-control"
+        formControlName="genre"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Show duration</label>
+      <input
+        type="time"
+        name=""
+        id=""
+        class="form-control"
+        formControlName="duration"
+      />
+    </div>
+    <hr />
+    <h2>Add Locations</h2>
+    <div formArrayName="showVenues">
+      <div *ngFor="let i of showVenues.controls; let k = index">
+        <hr />
+        <div [formGroupName]="k">
+          <div class="form-group">
+            <label for="">Venue Address</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="3"
+              class="form-control"
+              formControlName="address"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Show price</label>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="form-control"
+              formControlName="showPrice"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Show date and time</label>
+            <input
+              type="datetime-local"
+              name="showDateTime"
+              id=""
+              class="form-control"
+              formControlName="showDateTime"
+            />
+            <label
+              for=""
+              class="text-danger mt-2"
+              *ngIf="i.get('showDateTime').errors?.invalidDate"
+            >
+              Date cannot be in the past
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="">Total seating</label>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="form-control"
+              formControlName="totalSeatCount"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="createNewLocationForm()">
+      Add location form
+    </button>
+    <hr />
+
+    <input
+      type="submit"
+      value="Create show"
+      class="btn btn-success mt-2"
+      [disabled]="this.newShowForm.invalid || this.showVenues.length == 0"
+      (click)="submitHandler()"
+    />
+  </form>
+</div>

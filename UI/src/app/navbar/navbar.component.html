@@ -1,0 +1,43 @@
+<nav class="navbar navbar-light bg-light navbar-expand-lg">
+  <a class="navbar-brand" href="/" [routerLink]="['/']">BookMyShow</a>
+  <div class="navbar-nav ml-auto">
+    <a
+      class="nav-link"
+      href="/login"
+      [routerLink]="['/login']"
+      *ngIf="appstate.getLoginState() == false"
+      >Login</a
+    >
+    <a
+      class="nav-link"
+      href="/register"
+      [routerLink]="['/register']"
+      *ngIf="appstate.getLoginState() == false"
+      >Register</a
+    >
+    <a
+      href="/user"
+      class="nav-link text-success"
+      [routerLink]="['/user']"
+      *ngIf="appstate.getLoginState()"
+      >Hello! {{ appstate.getAuthDetails().userName }}</a
+    >
+    <a
+      href="/admin"
+      class="nav-link text-dark"
+      [routerLink]="['/admin']"
+      *ngIf="
+        appstate.getLoginState() &&
+        appstate.getAuthDetails().userRole == 'Admin'
+      "
+      >Admin Dashboard</a
+    >
+    <a
+      href="#"
+      class="nav-link text-danger"
+      *ngIf="appstate.getLoginState() == true"
+      (click)="logout()"
+      >Logout</a
+    >
+  </div>
+</nav>

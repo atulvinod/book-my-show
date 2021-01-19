@@ -1,0 +1,123 @@
+<div class="container mt-3 seat-selector">
+  <div class="ticket-container" *ngIf="showTicket">
+    <div class="show-ticket d-flex justify-content-between flex-column">
+      <div>
+        <h2>Your reservation was created successfully!</h2>
+        <hr />
+        <span class="font-weight-bold seat-number">Your seat numbers :</span
+        ><span *ngFor="let i of selectedSeats" class="seat-number"> {{ i }}</span>
+        <div class="mt-3">
+          <h4>Location</h4>
+          <p>{{ venueDetails.address }}</p>
+        </div>
+        <div class="mt-3">
+          <h4>Date and Time</h4>
+          <p>{{ venueDetails.showDateTime}}</p>
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="/">Back to homepage</a>
+        <a class="btn btn-success ml-2" href="/user" [routerLink]="['/user']">Show my reservations</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <img
+          src="{{ showDetails.posterImgPath }}"
+          class="card-img-top poster-img"
+          alt="..."
+        />
+      </div>
+    </div>
+    <div class="col left-border">
+      <h2>{{ showDetails.name }}</h2>
+      <hr />
+      <p>
+        {{ showDetails.description }}
+      </p>
+      <hr />
+      <div class="venue-discription">
+        <div>
+          <span class="font-weight-bold">Location: </span
+          ><span class="text-dark">{{ venueDetails.address }}</span>
+        </div>
+        <div>
+          <span class="font-weight-bold">Date and time: </span
+          ><span class="text-dark mt-2">{{
+            venueDetails.showDateTime
+          }}</span>
+        </div>
+      </div>
+      <hr />
+
+      <div class="row mt-3">
+        <div class="col-8">
+          <h4>Choose a seat</h4>
+          <div class="seat-grid mt-3">
+            <div
+              class="seat"
+              *ngFor="let i of totalSeats; let z = index"
+              [ngClass]="{
+                'seat-occupied': checkSeatReserved(z + 1),
+                'seat-selected': checkSeatMarked(z + 1)
+              }"
+              (click)="toggleSeat(z + 1)"
+            >
+              {{ z + 1 }}
+            </div>
+          </div>
+          <div class="seat-stats mt-4">
+            <div>
+              <span class="font-weight-bold">Availabe Seats : </span
+              ><span>{{ venueDetails.availableSeatCount }}</span>
+            </div>
+            <div>
+              <form [formGroup]="seatRequirementForm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1"
+                    >Set number of seats required</label
+                  >
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    formControlName="seatRequired"
+                  >
+                    <option *ngFor="let i of availableSeatArray; let z = index">
+                      {{ z + 1 }}
+                    </option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-4 mt-3 left-border d-flex flex-column justify-content-between"
+        >
+          <div class="price-container text-center">
+            <h3>Total Price</h3>
+            <h1 class="font-weight-bold">
+              {{
+                selectedSeatCount * showPrice 
+                  | currency: "INR":true
+              }}
+            </h1>
+          </div>
+          <div class="checkout-container">
+            <hr />
+            <button
+              class="btn btn-success w-100"
+              (click)="checkout()"
+              [disabled]="this.selectedSeats.length == 0"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
