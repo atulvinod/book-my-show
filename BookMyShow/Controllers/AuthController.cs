@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using BookMyShowAPI.Models.CoreModels;
-using BookMyShowAPI.Services.Auth;
-using BookMyShowAPI.Models.ViewModels;
+using BookMyShowAPI.Services;
+using BookMyShowAPI.Models;
 
 namespace BookMyShowAPI.Controllers
 {

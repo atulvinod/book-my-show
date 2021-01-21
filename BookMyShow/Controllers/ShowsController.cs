@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using BookMyShowAPI.Services.ShowService;
-using BookMyShowAPI.Services.VenueService;
-using BookMyShowAPI.Models.CoreModels;
+using BookMyShowAPI.Services;
+using BookMyShowAPI.Models;
 
 namespace BookMyShowAPI.Controllers
 {

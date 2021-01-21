@@ -1,0 +1,5 @@
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\BookMyShow.Models.dll
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.csprojAssemblyReference.cache
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.AssemblyInfoInputs.cache
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.AssemblyInfo.cs

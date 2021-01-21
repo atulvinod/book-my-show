@@ -1,0 +1,4 @@
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\Models\obj\Debug\netstandard2.0\Models.csprojAssemblyReference.cache
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\Models\obj\Debug\netstandard2.0\Models.AssemblyInfoInputs.cache
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\Models\obj\Debug\netstandard2.0\Models.AssemblyInfo.cs
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\Models\obj\Debug\netstandard2.0\Models.csproj.CoreCompileInputs.cache

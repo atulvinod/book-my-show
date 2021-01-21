@@ -1,11 +1,11 @@
-﻿using BookMyShowAPI.Services.ReservationService;
+﻿using BookMyShowAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookMyShowAPI.Models.ViewModels;
-using BookMyShowAPI.Models.CoreModels;
+using BookMyShowAPI.Models;
 
 namespace BookMyShowAPI.Controllers
 {
