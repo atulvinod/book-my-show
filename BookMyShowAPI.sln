@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMyShowAPI", "BookMyShowAPI.csproj", "{A71F02B3-2837-419B-BD97-B8154F11F3CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMyShowAPI", "BookMyShow\BookMyShowAPI.csproj", "{A71F02B3-2837-419B-BD97-B8154F11F3CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
