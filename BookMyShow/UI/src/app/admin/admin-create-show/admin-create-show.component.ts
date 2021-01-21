@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { LocationModel } from './../../models/location.model';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { LocationService } from './../../services/location.service';
 import { forkJoin } from 'rxjs';
 import { VenueModel } from 'src/app/models/venue.model';
 import { ShowModel } from 'src/app/models/show.model';
 import { ShowsService } from './../../services/shows.service';
 import { FormGroup, FormArray, Validators, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
-import { ChangeDetectorRef, Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewChildren } from "@angular/core";
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewChildren } from "@angular/core";
 import { Router } from '@angular/router';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: "app-admin-create",
@@ -15,8 +16,15 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class AdminCreateShowComponent implements OnInit {
 
     newShowForm: FormGroup;
-  
-    constructor(public showService: ShowsService, public router: Router) {
+    locationSearch: FormGroup;
+    suggestedLocations: LocationModel[] = []
+    showLocationPicker = false;
+    selectedLat = 37.7397;
+    selectedLng = -121.4252;
+    selectedAddress = "";
+    currentLocationControlIndex = 0;
+
+    constructor(public showService: ShowsService, public router: Router, public locationService: LocationService) {
 
         this.newShowForm = new FormGroup({
             name: new FormControl("", [Validators.required]),
@@ -26,9 +34,29 @@ export class AdminCreateShowComponent implements OnInit {
             genre: new FormControl("", [Validators.required]),
             showVenues: new FormArray([])
         })
+
+        this.locationSearch = new FormGroup({
+            search: new FormControl("", [Validators.required])
+        })
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.locationSearch.get("search").valueChanges.pipe(debounceTime(900), distinctUntilChanged()).subscribe(value => {
+            this.locationService.fetchSuggestions(value).subscribe(value => {
+                this.suggestedLocations = [];
+
+                (value["results"]["items"] as []).map((i) => {
+                    let parsed: LocationModel = {
+                        title: i["title"],
+                        category: i["category"]["id"],
+                        lat: i["position"][0],
+                        lng: i["position"][1]
+                    }
+                    this.suggestedLocations.push(parsed);
+                })
+            })
+        })
+    }
 
     get showVenues() {
         return this.newShowForm.get("showVenues") as FormArray;
@@ -58,7 +86,6 @@ export class AdminCreateShowComponent implements OnInit {
             })
 
             forkJoin(venueRequests).subscribe(result => {
-                console.log(result);
                 this.router.navigate(['/admin']);
             }, error => console.error(error));
         })
@@ -66,15 +93,42 @@ export class AdminCreateShowComponent implements OnInit {
 
     dateValidator(): ValidatorFn {
         return (control: AbstractControl): { [key: string]: any } | null => {
-            console.log(control.value);
             let controlDate = new Date(control.value);
-            console.log(controlDate, new Date());
-
             if (controlDate < new Date()) {
                 return { invalidDate: true };
             } else {
                 return null;
             }
         }
+    }
+
+    selectLocation(location: LocationModel) {
+
+        this.selectedLat = Number(location.lat);
+        this.selectedLng = Number(location.lng);
+        console.log(this.selectedLat, this.selectedLng);
+        this.locationService.fetchAddressViaGeocode(this.selectedLat, this.selectedLng).subscribe((address: {}[]) => {
+            if (address["items"].length > 0) {
+                this.selectedAddress = address["items"][0]["address"]["label"]
+                console.log("recieved address: ", this.selectedAddress);
+            } else {
+                this.selectedAddress = location.title
+            }
+        })
+    }
+
+    triggerShowLocationPicker(formElementIndex) {
+        this.showLocationPicker = true;
+        this.currentLocationControlIndex = formElementIndex;
+    }
+
+    patchAddressInControl() {
+        this.showVenues.controls[this.currentLocationControlIndex].get("address").patchValue(this.selectedAddress);
+        this.suggestedLocations = []
+        this.showLocationPicker = false;
+    }
+
+    deleteLocationForm(formElementIndex){
+        this.showVenues.removeAt(formElementIndex)
     }
 }

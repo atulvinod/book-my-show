@@ -1,4 +1,53 @@
 <div class="container mt-3">
+
+
+  <div class="location-picker-container" [hidden]="!showLocationPicker">
+    <div class="location-picker">
+      <div class="d-flex justify-content-between">
+        <h1>Pick a location</h1>
+        <button class="btn btn-danger align-self-center" (click)="showLocationPicker=false">Close</button>
+      </div>
+      <hr />
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col h-100">
+            <div class="search-bar">
+              <form [formGroup]="locationSearch">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    class="form-control"
+                    formControlName="search"
+                    placeholder="search a location"
+                  />
+                </div>
+              </form>
+              <span class="text-muted font-italic">--Not all locations will have an address--</span>
+            </div>
+            <div class="search-results">
+              <div class="search-result" *ngFor="let i of suggestedLocations" (click)="selectLocation(i)">
+                <h6>{{i.title}}</h6>
+                <span class="text-muted">Lat: {{i.lat}}</span>
+                <span class="pl-1 pr-1"> | </span>
+                <span class="text-muted ml-1">Lng: {{i.lng}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col left-border h-100">
+            <div class="map-container">
+              <app-map [selectedLat]="this.selectedLat" [selectedLng]="this.selectedLng">
+
+              </app-map>
+              
+              <button class="btn btn-success mt-1" (click)="patchAddressInControl()">Select Location</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <h1>Create Show</h1>
   <hr />
   <form [formGroup]="newShowForm">
@@ -50,8 +99,8 @@
     <hr />
     <h2>Add Locations</h2>
     <div formArrayName="showVenues">
-      <div *ngFor="let i of showVenues.controls; let k = index">
-        <hr />
+      <div *ngFor="let i of showVenues.controls; let k = index" class="show-venue-form">
+      
         <div [formGroupName]="k">
           <div class="form-group">
             <label for="">Venue Address</label>
@@ -63,6 +112,9 @@
               class="form-control"
               formControlName="address"
             ></textarea>
+            <div>
+              <button class="btn btn-info btn-sm mt-1"(click)="triggerShowLocationPicker(k)">Add Location Via Map</button>
+            </div>
           </div>
           <div class="form-group">
             <label for="">Show price</label>
@@ -101,6 +153,7 @@
               formControlName="totalSeatCount"
             />
           </div>
+          <button class="mt-1 btn btn-sm text-danger" (click)="deleteLocationForm(k)">Delete Form</button>
         </div>
       </div>
     </div>
@@ -108,7 +161,6 @@
       Add location form
     </button>
     <hr />
-
     <input
       type="submit"
       value="Create show"

@@ -5,14 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using BookMyShowAPI.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using BookMyShowAPI.Config;
 using SimpleInjector;
-using BookMyShowAPI.Services.ShowService;
-using BookMyShowAPI.Services.VenueService;
-using BookMyShowAPI.Services.ReservationService;
-using BookMyShowAPI.Services.Auth;
+using BookMyShowAPI.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookMyShowAPI
 {
@@ -70,11 +67,12 @@ namespace BookMyShowAPI
             //    options.ClientSecret = "X3VcGuBxgnWrOvtZgjBCPicQ"
             //});
 
+            //   services.AddScoped<IAuthService, AuthService>();
+
             services.AddSimpleInjector(this.injectorContainer, options =>
             {
                 options.AddAspNetCore().AddControllerActivation();
             });
-
 
             this.InitializeContainer();
         }
@@ -109,6 +107,7 @@ namespace BookMyShowAPI
             });
 
             this.injectorContainer.Verify();
+
         }
 
         private void InitializeContainer()
@@ -120,7 +119,6 @@ namespace BookMyShowAPI
             this.injectorContainer.Register<IReservationsService, ReservationService>(Lifestyle.Scoped);
 
             this.injectorContainer.Register<IAuthService, AuthService>(Lifestyle.Scoped);
-
         }
 
     }

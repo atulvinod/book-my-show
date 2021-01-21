@@ -3,3 +3,13 @@ D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj
 D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.GeneratedMSBuildEditorConfig.editorconfig
 D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.AssemblyInfoInputs.cache
 D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.AssemblyInfo.cs
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\BookMyShow.Services.deps.json
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\BookMyShow.Services.dll
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\ref\BookMyShow.Services.dll
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\BookMyShow.Services.pdb
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\bin\Debug\netcoreapp5.0\BookMyShow.Models.pdb
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.csproj.CoreCompileInputs.cache
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.csproj.CopyComplete
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.dll
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\ref\BookMyShow.Services.dll
+D:\My Projects\Keka Internship Tasks\task25\BookMyShow-2\BookMyShow.Services\obj\Debug\netcoreapp5.0\BookMyShow.Services.pdb

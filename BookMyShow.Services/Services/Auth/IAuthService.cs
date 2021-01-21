@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BookMyShowAPI.Models.ViewModels;
 using BookMyShowAPI.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookMyShowAPI.Services
 {
